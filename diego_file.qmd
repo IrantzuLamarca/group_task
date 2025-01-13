@@ -25,7 +25,7 @@ elections_aggregated <- election_data_tidy |>
   group_by(date, siglas) |> 
   summarize(
     total_votes = sum(votes, na.rm = TRUE), 
-    total_participation = sum(votos_candidaturas, na.rm = TRUE) 
+    total_participation = sum(votos_candidaturas, votos_nulos, votos_blancos, na.rm = TRUE) 
   ) |> 
   mutate(vote_share = total_votes / total_participation * 100) 
 elections_aggregated
